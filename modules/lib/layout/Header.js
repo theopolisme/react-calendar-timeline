@@ -30,7 +30,7 @@ var Header = function (_Component) {
   function Header(props) {
     _classCallCheck(this, Header);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Header).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
 
     _this.periodClick = function (e) {
       var _e$target$dataset = e.target.dataset;
@@ -131,7 +131,7 @@ var Header = function (_Component) {
       } else if (unit === 'day') {
         return time.format(width < 150 ? 'L' : 'dddd, LL');
       } else if (unit === 'hour') {
-        return time.format(width < 50 ? 'HH' : width < 130 ? 'HH:00' : width < 150 ? 'L, HH:00' : 'dddd, LL, HH:00');
+        return time.format(width < 50 ? 'ha' : width < 130 ? 'h:00a' : width < 150 ? 'L, h:00a' : 'dddd, LL, h:00a').slice(0, -1); // slice am -> a, pm -> p
       } else {
         return time.format('LLL');
       }
@@ -146,9 +146,9 @@ var Header = function (_Component) {
       } else if (unit === 'day') {
         return time.format(width < 47 ? 'D' : width < 80 ? 'dd D' : width < 120 ? 'ddd, Do' : 'dddd, Do');
       } else if (unit === 'hour') {
-        return time.format(width < 50 ? 'HH' : 'HH:00');
+        return time.format(width < 50 ? 'ha' : 'h:00a').slice(0, -1); // slice am -> a, pm -> p
       } else if (unit === 'minute') {
-        return time.format(width < 60 ? 'mm' : 'HH:mm');
+        return time.format(width < 60 ? 'mm' : 'h:mm');
       } else {
         return time.get(unit);
       }
